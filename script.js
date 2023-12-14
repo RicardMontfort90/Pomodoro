@@ -1,3 +1,6 @@
+/* audio */
+let audio = document.getElementById("alertSound");  // Agrega esta línea
+
 let focusButton = document.getElementById("focus");
 let buttons = document.querySelectorAll(".btn");
 let shortBreakButton = document.getElementById("shortbreak");
@@ -107,5 +110,6 @@ startBtn.addEventListener("click", () => {
                 }
             }
         }, 1000);
+        audio.play();
     }
 });  

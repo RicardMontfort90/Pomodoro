@@ -27,6 +27,8 @@ button {
     cursor: pointer;
 }
 
+
+
 /* UP SECTION CONTAINER */
 .section-container {
     display: flex;
@@ -39,6 +41,11 @@ button {
     border-radius: 0.5em;
     background-color: #3e3f43;
     color: #a9a7a7;
+}
+
+.btn:hover {
+    background-color: #cb202d;
+    color: #ffffff;
 }
 
 .btn-focus {
@@ -80,6 +87,10 @@ button {
     outline: none;
     color: #ffffff;
     font-size: 2em;
+}
+
+#btn-reset:hover {
+    color: #cb202d;
 }
 
 /* HIDE BTN-PAUSE & BTN-RESET*/

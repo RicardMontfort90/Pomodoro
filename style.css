@@ -41,6 +41,11 @@ button {
     border-radius: 0.5em;
     background-color: #3e3f43;
     color: #a9a7a7;
+    /* Tomato.png down*/
+    background-image: url('img/tomato.png'); /* Ruta a tu imagen */
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir el botón */
+    background-position: center; /* Centra la imagen en el botón */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
 }
 
 .btn:hover {

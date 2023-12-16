@@ -1,6 +1,4 @@
-/* audio */
-let audio = document.getElementById("alertSound");  // Agrega esta línea
-
+let audio = document.getElementById("alertSound");
 let focusButton = document.getElementById("focus");
 let buttons = document.querySelectorAll(".btn");
 let shortBreakButton = document.getElementById("shortbreak");
@@ -11,14 +9,18 @@ let pause = document.getElementById("btn-pause");
 let time = document.getElementById("time");
 let set;
 let active = "focus";
-/*  59 sec when we start*/
-let count = 59; 
+let count = 59;
 let paused = true;
-/* 24 min when we start*/
-let minCount = 24; 
-/* 24 min + 1 = 25 min before start*/
-time.textContent = `${minCount + 1}:00`; 
-/* Logic for put a 0 if value is less than 10 */
+let minCount = 24;
+
+let durations = {
+    focus: 10,
+    shortbreak: 5,
+    longbreak: 15
+};
+
+time.textContent = `${minCount + 1}:00`;
+
 const appendZero = (value) => {
     value = value < 10 ? `0${value}` : value;
     return value;
@@ -29,15 +31,15 @@ reset.addEventListener(
     (resetTime = () => {
         pauseTimer();
         switch (active) {
-            case "long":
+            case "longbreak":
                 minCount = 14;
-            break;
-            case "short":
+                break;
+            case "shortbreak":
                 minCount = 4;
-            break;
+                break;
             default:
                 minCount = 24;
-            break;
+                break;
         }
         count = 59;
         time.textContent = `${minCount + 1}:00`;
@@ -50,33 +52,50 @@ const removeFocus = () => {
     });
 };
 
+const setAnimationDuration = (duration) => {
+    let tomato = document.getElementById("tomato");
+
+    // Detener la animación actual
+    tomato.style.animation = "none";
+
+    // Obligar a la reflow del navegador
+    void tomato.offsetWidth;
+
+    // Establecer la nueva duración de la animación
+    tomato.style.animation = `tomatoAnimation ${duration}s linear infinite`;
+}
+
 focusButton.addEventListener("click", () => {
+    active = "focus";
     removeFocus();
     focusButton.classList.add("btn-focus");
     pauseTimer();
     minCount = 24;
     count = 59;
     time.textContent = `${minCount + 1}:00`;
+    setAnimationDuration(durations.focus);
 });
 
 shortBreakButton.addEventListener("click", () => {
-    active = "short";
+    active = "shortbreak";
     removeFocus();
     shortBreakButton.classList.add("btn-focus");
     pauseTimer();
     minCount = 4;
     count = 59;
     time.textContent = `${appendZero(minCount + 1)}:00`;
+    setAnimationDuration(durations.shortbreak);
 });
 
 longBreakButton.addEventListener("click", () => {
-    active = "long";
+    active = "longbreak";
     removeFocus();
     longBreakButton.classList.add("btn-focus");
     pauseTimer();
     minCount = 14;
     count = 59;
     time.textContent = `${minCount + 1}:00`;
+    setAnimationDuration(durations.longbreak);
 });
 
 pause.addEventListener(
@@ -90,11 +109,16 @@ pause.addEventListener(
     })
 );
 
+
+
 startBtn.addEventListener("click", () => {
+    let duration = durations[active];
+
     reset.classList.add("show");
     pause.classList.add("show");
     startBtn.classList.add("hide");
     startBtn.classList.remove("show");
+
     if (paused) {
         paused = false;
         time.textContent = `${appendZero(minCount)}:${appendZero(count)}`;
@@ -110,6 +134,8 @@ startBtn.addEventListener("click", () => {
                 }
             }
         }, 1000);
+        setAnimationDuration(duration);
         audio.play();
     }
-});  
+});
+

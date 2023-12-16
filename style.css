@@ -38,7 +38,7 @@ button {
 
 .btn {
     padding: 1em 2em; 
-    border-radius: 0.5em;
+    border-radius: 30em;
     background-color: #3e3f43;
     color: #a9a7a7;
     /* Tomato.png down
@@ -81,7 +81,7 @@ button {
 #btn-start,
 #btn-pause {
     padding: 1em 2em;
-    border-radius: 0.5em;
+    border-radius: 30em;
     cursor: pointer;
     background-color: #ffffff;
 }
@@ -136,3 +136,9 @@ button {
     fill: #3e3f43;
 }
 
+@keyframes tomatoAnimation {
+    to {
+      transform: scaleY(1);
+    }
+  }
+  

@@ -41,7 +41,7 @@ button {
     border-radius: 0.5em;
     background-color: #3e3f43;
     color: #a9a7a7;
-    /* Tomato.png down*/
+    /* Tomato.png down
     background-image: url('img/tomato.png'); /* Ruta a tu imagen */
     background-size: cover; /* Ajusta el tamaño de la imagen para cubrir el botón */
     background-position: center; /* Centra la imagen en el botón */
@@ -86,6 +86,17 @@ button {
     background-color: #ffffff;
 }
 
+
+#btn-start:hover {
+    color: #ffffff;
+    background-color: #cb202d;
+}
+
+#btn-pause:hover {
+    color: #ffffff;
+    background-color: #cb202d;
+}
+
 #btn-reset {
     background-color: transparent;
     border: none;
@@ -106,3 +117,18 @@ button {
 .show {
     display: block;
 }
+
+
+/* Establece el fondo del contenedor como el SVG */
+#tomato-svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    fill: red;
+    transform: scale(0.4); /* Ajusta este valor según sea necesario */
+    /* Puedes ajustar este valor según sea necesario */
+    z-index: -1; /* Para que el SVG esté detrás del span */
+}
+

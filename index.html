@@ -20,14 +20,26 @@
     <div class="container">
         <div class="section-container">
             <button id="focus" class="btn btn-timer btn-focus">Focus</button>
-            <button id="shortbreak" class="btn btn-shortbreak">Short Break</button>
-            <button id="longbreak" class="btn btn-longbreak">Long Break</button>
+            <button id="shortbreak" class="btn btn-shortbreak">Break</button>
+            <button id="longbreak" class="btn btn-longbreak">Rest</button>
         </div>
         <div class="time-btn-container">
-            <span id="time"></span>
+            <svg id="tomato-svg" viewBox="0 0 512 512" width="200" height="200" fill="red">
+                <clipPath id="myClip">
+                    <rect x="0" y="0" width="512" height="512" fill="red">
+                        <animate attributeName="height" values="0;512" dur="10s" repeatCount="indefinite" />
+                    </rect>
+                </clipPath>
+                <path id="tomato" d="M304,84c18.8-11.6,35.2-32,35.2-67.2c0-1.2-0.4-2-1.2-2.8c-0.8-0.8-2-1.6-3.2-1.2c-16.4,1.6-36.4,9.2-53.6,25.6
+                c-5.2-14.4-12.4-26-22.4-37.2c-1.6-1.6-4.4-1.6-6,0c-10.4,12-18.4,22.8-24,36.4c-16.4-15.2-33.2-23.2-51.6-25.2
+                c-1.2,0-2.4,0.4-3.2,1.2c-0.8,0.8-1.2,2-1.2,2.8c0,35.2,16,55.6,33.6,67.2C86,88.4,0,166.4,0,270c0,114.4,109.6,242,256,242
+                s256-127.2,256-242C512,166,425.2,88,304,84z" />
+                <use clip-path="url(#myClip)" href="#tomato" fill="purple" />
+            </svg>
+            <span id="time"></span> <br>
             <div class="btn-container">
                 <audio id="alertSound" src="sound/PR.mp3" preload="auto"></audio>
-                <button id="btn-start" class="show"><i class="fas fa-apple-alt"></i> Start</button>
+                <button id="btn-start" class="show"><i class="fas fa-apple-alt"></i>Start</button>
                 <button id="btn-pause" class="hide">Pause</button>
                 <button id="btn-reset" class="hide">
                 <i class="fa-solid fa-rotate-right"></i>

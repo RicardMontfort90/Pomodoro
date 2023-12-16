@@ -132,3 +132,7 @@ button {
     z-index: -1; /* Para que el SVG esté detrás del span */
 }
 
+#tomato-svg use {
+    fill: #3e3f43;
+}
+

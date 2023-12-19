@@ -136,6 +136,10 @@ button {
     fill: #3e3f43;
 }
 
+#tomato {
+    animation: tomatoAnimation 1s linear infinite;
+}
+
 @keyframes tomatoAnimation {
     to {
       transform: scaleY(1);

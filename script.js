@@ -138,4 +138,3 @@ startBtn.addEventListener("click", () => {
         audio.play();
     }
 });
-

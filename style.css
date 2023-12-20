@@ -48,10 +48,7 @@ button {
     background-repeat: no-repeat; /* Evita que la imagen se repita */
 }
 
-.btn:hover {
-    background-color: #cb202d;
-    color: #ffffff;
-}
+
 
 .btn-focus {
     background-color: #cb202d;
@@ -78,24 +75,27 @@ button {
     gap: 2em;
 }
 
+
+
 #btn-start,
 #btn-pause {
     padding: 1em 2em;
     border-radius: 30em;
     cursor: pointer;
     background-color: #ffffff;
+    -webkit-box-reflect: below
+    3px linear-gradient(transparent, #0005);
+    box-shadow: 0 0 5px #cb202d, 0 0 5px #cb202d,
+                0 0 20px #cb202d, 0 0 5px #cb202d;
 }
 
-
-#btn-start:hover {
-    color: #ffffff;
-    background-color: #cb202d;
-}
-
+.btn:hover,
+#btn-start:hover,
 #btn-pause:hover {
     color: #ffffff;
     background-color: #cb202d;
 }
+
 
 #btn-reset {
     background-color: transparent;
@@ -103,6 +103,14 @@ button {
     outline: none;
     color: #ffffff;
     font-size: 2em;
+    -webkit-box-reflect: below
+    3px linear-gradient(transparent, #0005);
+
+}
+
+#btn-reset i {
+    text-shadow: 0 0 5px #cb202d, 0 0 5px #cb202d,
+                 0 0 20px #cb202d, 0 0 0px #cb202d;
 }
 
 #btn-reset:hover {

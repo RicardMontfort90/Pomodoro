@@ -73,6 +73,7 @@ button {
     display: flex;
     justify-content: center;
     gap: 2em;
+    margin-top: 0.5em;
 }
 
 
@@ -85,8 +86,8 @@ button {
     background-color: #ffffff;
     -webkit-box-reflect: below
     3px linear-gradient(transparent, #0005);
-    box-shadow: 0 0 5px #cb202d, 0 0 5px #cb202d,
-                0 0 20px #cb202d, 0 0 5px #cb202d;
+    text-shadow: 0 0 5px #ffffff, 0 0 5px #ffffff,
+                0 0 20px #ffffff, 0 0 5px #cb202d;
 }
 
 .btn:hover,
@@ -153,4 +154,29 @@ button {
       transform: scaleY(1);
     }
   }
-  
+
+
+  #progress-bar {
+    height: 10px;
+    background: #cb202d; /* Color de fondo de la barra */
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+    overflow: hidden; /* Oculta el contenido que se desborda */
+    position: relative; /* Añade posición relativa */
+    transition: width 1s linear;
+    box-shadow: 0 0 10px 5px rgba(103, 12, 25, 30); /* Añade el resplandor */
+}
+
+
+
+
+#progress-bar-inner {
+    height: 100%;
+    width: 0; /* Inicia con ancho 0 */
+    background: #3e3f43; /* Color fijo */
+    position: absolute; /* Añade posición absoluta */
+    top: 0; /* Alinea con la parte superior de progress-bar */
+    left: 0; /* Alinea con la parte izquierda de progress-bar */
+    transition: width 1s linear;
+}

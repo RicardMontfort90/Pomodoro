@@ -19,6 +19,10 @@ let durations = {
     longbreak: 15
 };
 
+/* Progress bar */
+
+let progressBarInner = document.getElementById("progress-bar-inner");
+
 time.textContent = `${minCount + 1}:00`;
 
 const appendZero = (value) => {
@@ -112,6 +116,7 @@ pause.addEventListener(
 
 
 startBtn.addEventListener("click", () => {
+    let totalTime = minCount * 60 + count;
     let duration = durations[active];
 
     reset.classList.add("show");
@@ -124,6 +129,10 @@ startBtn.addEventListener("click", () => {
         time.textContent = `${appendZero(minCount)}:${appendZero(count)}`;
         set = setInterval(() => {
             count--;
+            let remainingTime = minCount * 60 + count;
+            let progressPercentage = ((totalTime - remainingTime) / totalTime) * 100;
+            
+            progressBarInner.style.width = `${progressPercentage}%`;
             time.textContent = `${appendZero(minCount)}:${appendZero(count)}`;
             if (count == 0) {
                 if (minCount != 0) {
@@ -131,6 +140,9 @@ startBtn.addEventListener("click", () => {
                     count = 60;
                 } else {
                     clearInterval(set);
+
+                    
+                    progressBarInner.style.width = `${progressPercentage}%`
                 }
             }
         }, 1000);

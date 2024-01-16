@@ -12,6 +12,7 @@ let active = "focus";
 let count = 59;
 let paused = true;
 let minCount = 24;
+let shouldPlaySound = false; // Variable para controlar si se debe reproducir el sonido
 
 let durations = {
     focus: 10,
@@ -20,7 +21,6 @@ let durations = {
 };
 
 /* Progress bar */
-
 let progressBarInner = document.getElementById("progress-bar-inner");
 
 time.textContent = `${minCount + 1}:00`;
@@ -30,10 +30,19 @@ const appendZero = (value) => {
     return value;
 };
 
+// Función para reproducir el sonido
+function playAlertSound() {
+    if (shouldPlaySound) {
+        audio.play();
+        shouldPlaySound = false; // Restablecer la variable para la próxima vez
+    }
+}
+
 reset.addEventListener(
     "click",
     (resetTime = () => {
         pauseTimer();
+        shouldPlaySound = false; // No se reproduce el sonido al hacer clic en el botón de reinicio
         switch (active) {
             case "longbreak":
                 minCount = 14;
@@ -110,6 +119,7 @@ pause.addEventListener(
         startBtn.classList.remove("hide");
         pause.classList.remove("show");
         reset.classList.remove("show");
+        shouldPlaySound = false; // No se reproduce el sonido al hacer clic en el botón de pausa
     })
 );
 
@@ -131,7 +141,6 @@ startBtn.addEventListener("click", () => {
             count--;
             let remainingTime = minCount * 60 + count;
             let progressPercentage = ((totalTime - remainingTime) / totalTime) * 100;
-            
             progressBarInner.style.width = `${progressPercentage}%`;
             time.textContent = `${appendZero(minCount)}:${appendZero(count)}`;
             if (count == 0) {
@@ -140,13 +149,13 @@ startBtn.addEventListener("click", () => {
                     count = 60;
                 } else {
                     clearInterval(set);
-
-                    
-                    progressBarInner.style.width = `${progressPercentage}%`
+                    progressBarInner.style.width = `${progressPercentage}%`;
+                    shouldPlaySound = true; // Indica que se debe reproducir el sonido al finalizar cualquier tiempo
+                    playAlertSound(); // Reproduce el sonido al finalizar cualquier tiempo
                 }
             }
         }, 1000);
-        setAnimationDuration(duration);
+        setAnimationDuration(duration); 
         audio.play();
     }
 });

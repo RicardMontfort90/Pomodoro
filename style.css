@@ -7,6 +7,9 @@
 
 body {
     background-color: #cd202d;
+    background-image: url('img/tomato.png');
+    background-size: 16%; /* Tamaño automático */
+    background-repeat:round /* Repetir tanto horizontal como verticalmente */
 }
 
 /* CONTAINER EN GENERAL BUTTONS */
